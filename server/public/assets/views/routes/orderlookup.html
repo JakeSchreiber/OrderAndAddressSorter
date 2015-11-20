@@ -1,0 +1,57 @@
+<body ng-app="myApp" ng-controller="anotherController">
+
+
+<div class="form-group">
+    <label for="input2" class="col-md-4 control-label">Search By Name</label>
+    <div class="col-sm-6">
+        <select id="input2" class="form-control" ng-model="user.name">
+            <option value="">All Names</option>
+            <option ng-repeat="user in people" value="{{user.name}}">{{user.name}}</option>
+        </select>
+    </div>
+</div>
+
+
+<label>Start Date: <input ng-model="startDate"></label>
+<label>End Date: <input ng-model="endDate"></label>
+
+
+<table id="searchTextResults" class="statsTable table table-bordered">
+    <tr>
+        <th>Name</th>
+        <th>Address Description</th>
+        <th>Street</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip</th>
+        <th>Amount</th>
+        <th>Order Date</th>
+    </tr>
+
+    <tr id="orders" ng-repeat="(key, value) in filteredOrders = (orders | orderBy: 'name'  | filter:user | dateFilter:startDate:endDate) track by $index" ng-class="rowClass(user)" ng-model="orderList">
+        <td>{{value.name}}</td>
+        <td>{{value.address_type}}</td>
+        <td>{{value.address_street}}</td>
+        <td>{{value.address_city}}</td>
+        <td>{{value.address_state}}</td>
+        <td>{{value.address_zip}}</td>
+        <td>{{value.amount | currency}}</td>
+        <td>{{value.order_date | date}}</td>
+
+    </tr>
+
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Total Items: {{ filteredOrders.length }}</td>
+    <!--<td>Total: ${{ filteredOrders[0].amount}}</td>-->
+    <!--<td>Total: {{ filteredOrders}}</td>-->
+    <td>Total Cost: {{ totalOrdersCost | currency}}</td>
+    <!--<td>Total: {{getTotal(filteredOrders)}}</td>-->
+    <td></td>
+
+
+</table>
+

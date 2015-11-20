@@ -1,0 +1,13 @@
+#searchTextResults {
+    /*margin-top: 50px;*/
+}
+
+a {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: relative;
+    float: none;
+    width: 25%;
+}

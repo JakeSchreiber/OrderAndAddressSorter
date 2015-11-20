@@ -1,0 +1,40 @@
+<body ng-app="myApp" ng-controller="someController">
+
+
+<!--<label>Search: <input ng-model="searchText"></label>-->
+
+
+<div class="form-group">
+    <label for="input2" class="col-sm-4 control-label">Search By Name</label>
+    <div class="col-sm-6">
+        <select id="input2" class="form-control" ng-model="user.name">
+            <option value="">All Names</option>
+            <option ng-repeat="user in people" value="{{user.name}}">{{user.name}}</option>
+        </select>
+    </div>
+</div>
+
+
+<table id="searchTextResults" class="statsTable table table-bordered">
+
+    <tr>
+        <th>Name</th>
+        <th>Address Description</th>
+        <th>Street</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip</th>
+
+    </tr>
+
+    <tr ng-repeat="user in addresses | filter:user">
+        <td>{{user.name}}</td>
+        <td>{{user.address_type}}</td>
+        <td>{{user.address_street}}</td>
+        <td>{{user.address_city}}</td>
+        <td>{{user.address_state}}</td>
+        <td>{{user.address_zip}}</td>
+    </tr>
+</table>
+
+</body>
